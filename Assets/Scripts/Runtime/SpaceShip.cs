@@ -32,6 +32,7 @@ namespace NewKris.Runtime {
             PlayerController.OnEndFire2 += EndFire2;
 
             _position = new DampedVector(transform.position);
+            HideCursor();
         }
 
         private void OnDestroy() {
@@ -93,6 +94,12 @@ namespace NewKris.Runtime {
 
         private float GetTargetPitch() {
             return (_position.Velocity.z / maxMoveSpeed) * maxPitch;
+        }
+
+        private void HideCursor() {
+            Texture2D cursorTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+            cursorTexture.SetPixel(0, 0, Color.clear);
+            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         }
     }
 }
