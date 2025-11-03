@@ -1,14 +1,11 @@
-using System;
-using NewKris.Runtime.Utility;
 using NewKris.Runtime.Utility.CommonObjects;
 using UnityEngine;
 
-namespace NewKris.Runtime {
+namespace NewKris.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
+        [Header("Parameters")]
         public float maxMoveSpeed;
         public float moveDamping;
-        public Transform modelPivot;
-        public Boundary boundary;
 
         [Header("Pitch")] 
         public float maxPitch;
@@ -17,6 +14,14 @@ namespace NewKris.Runtime {
         [Header("Roll")]
         public float maxRoll;
         public float rollDamping;
+
+        [Header("Weapons")] 
+        public Weapon weapon1;
+        public Weapon weapon2;
+        
+        [Header("Miscs")]
+        public Transform modelPivot;
+        public Boundary boundary;
 
         public Transform reticle;
 
@@ -64,18 +69,19 @@ namespace NewKris.Runtime {
         }
 
         private void BeginFire1() {
+            weapon1?.BeginFire();
         }
 
         private void EndFire1() {
-            
+            weapon1?.EndFire();
         }
 
         private void BeginFire2() {
-            
+            weapon2?.BeginFire();
         }
 
         private void EndFire2() {
-            
+            weapon2?.EndFire();
         }
 
         private Vector3 GetTargetPos() {

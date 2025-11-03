@@ -1,8 +1,7 @@
-using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace NewKris.Runtime {
+namespace NewKris.Runtime.Environment {
     public class ScrollingBackground : MonoBehaviour {
         public float scrollSpeed;
         public float spacing;
