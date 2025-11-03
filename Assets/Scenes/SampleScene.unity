@@ -899,9 +899,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb418464893447b8fe1977ce2fe465f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.SpaceShip
-  maxMoveSpeed: 100
-  minMoveSpeed: 1
-  moveDamping: 0.25
+  maxMoveSpeed: 200
+  moveDamping: 0.1
+  maxRoll: 0
+  rollDamping: 0
   reticle: {fileID: 425118565}
 --- !u!1 &1783346288
 GameObject:

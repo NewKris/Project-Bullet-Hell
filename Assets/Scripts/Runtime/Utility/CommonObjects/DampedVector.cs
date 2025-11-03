@@ -7,6 +7,7 @@ namespace NewKris.Runtime.Utility.CommonObjects {
 
 		public Vector3 Current { get; private set; }
 		public Vector3 Target { get; set; }
+		public Vector3 Velocity => _velocity;
 
 		public DampedVector(Vector3 startValue) {
 			Current = startValue;
@@ -15,12 +16,15 @@ namespace NewKris.Runtime.Utility.CommonObjects {
 		}
 
 		public Vector3 Tick(float damping) {
-			float deltaTime = Time.deltaTime;
-			return Tick(damping, deltaTime);
+			return Tick(damping, Time.deltaTime, Mathf.Infinity);
 		}
 		
-		public Vector3 Tick(float damping, float deltaTime) {
-			Current = Vector3.SmoothDamp(Current, Target, ref _velocity, damping, Mathf.Infinity, deltaTime);
+		public Vector3 Tick(float damping, float maxSpeed) {
+			return Tick(damping, Time.deltaTime, maxSpeed);
+		}
+		
+		public Vector3 Tick(float damping, float deltaTime, float maxSpeed) {
+			Current = Vector3.SmoothDamp(Current, Target, ref _velocity, damping, maxSpeed, deltaTime);
 			return Current;
 		}
 	}

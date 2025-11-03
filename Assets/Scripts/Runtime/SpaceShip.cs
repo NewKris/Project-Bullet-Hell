@@ -5,12 +5,16 @@ using UnityEngine;
 namespace NewKris.Runtime {
     public class SpaceShip : MonoBehaviour {
         public float maxMoveSpeed;
-        public float minMoveSpeed;
         public float moveDamping;
+
+        [Header("Roll")] 
+        public float maxRoll;
+        public float rollDamping;
 
         public Transform reticle;
 
         private DampedVector _position;
+        private DampedAngle _roll;
         private readonly Plane _groundPlane = new Plane(Vector3.up, Vector3.zero);
         
         private void Awake() {
@@ -29,12 +33,8 @@ namespace NewKris.Runtime {
 
         private void Update() {
             _position.Target = GetTargetPos();
+            transform.position = _position.Tick(moveDamping, maxMoveSpeed);
             reticle.position = _position.Target;
-
-            Vector3 nextPosition = _position.Tick(moveDamping);
-            Vector3 vel = nextPosition - transform.position;
-            
-            transform.position += Vector3.ClampMagnitude(vel, maxMoveSpeed * Time.deltaTime);
         }
 
         private void BeginFire1() {
@@ -60,6 +60,14 @@ namespace NewKris.Runtime {
             }
 
             return Vector3.zero;
+        }
+
+        private float GetTargetRoll() {
+            return 0;
+        }
+
+        private Vector3 GetSmallerVector(Vector3 a, Vector3 b) {
+            return a.sqrMagnitude < b.sqrMagnitude ? a : b;
         }
     }
 }
