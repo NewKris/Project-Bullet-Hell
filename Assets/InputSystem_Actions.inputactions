@@ -59,6 +59,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ccaf9d79-c588-4d5c-bff5-857b4f3eb579",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1730797d-310b-4883-9ed8-0dd6384838bc",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -72,6 +83,17 @@
                     "name": "",
                     "id": "f81ba16b-7ac6-4d99-b57c-401d0f1a409b",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64406b2e-bdea-4bc7-85ec-89d351c5c403",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

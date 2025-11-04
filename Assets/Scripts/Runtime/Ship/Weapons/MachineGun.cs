@@ -13,9 +13,11 @@ namespace NewKris.Runtime.Ship.Weapons {
         
         private bool _firing;
         private int _nextSpawnIndex;
-        private Timer _fireCooldown;
+        private float _lastFiredTime;
         private PrefabPool _bulletPool;
-        private AudioSource _bulletAudioSource;
+        private AudioSource _audio;
+        
+        private float TimeSinceLastBullet => Time.time - _lastFiredTime;
             
         public override void BeginFire() {
             _firing = true;
@@ -29,22 +31,13 @@ namespace NewKris.Runtime.Ship.Weapons {
             Transform projectileParent = GameObject.FindGameObjectWithTag("Projectile Parent").transform;
             _bulletPool = new PrefabPool(bulletPrefab, projectileParent, 100, 50);
 
-            _fireCooldown = TimerManager.CreateTimer();
-            
-            _bulletAudioSource = GetComponent<AudioSource>();
-        }
-
-        private void OnDestroy() {
-            TimerManager.RemoveTimer(_fireCooldown);
+            _audio = GetComponent<AudioSource>();
         }
 
         private void Update() {
-            if (!_firing || !_fireCooldown.Elapsed) {
-                return;
+            if (_firing && TimeSinceLastBullet >= fireRate) {
+                SpawnBullet();
             }
-            
-            _fireCooldown.SetTimer(fireRate);
-            SpawnBullet();
         }
 
         private void SpawnBullet() {
@@ -55,11 +48,13 @@ namespace NewKris.Runtime.Ship.Weapons {
 
                 _nextSpawnIndex = (_nextSpawnIndex + 1) % bulletSpawns.Length;
             }
+            
+            _lastFiredTime = Time.time;
         }
 
         private void PlayBulletSound() {
             int randomSoundIndex = UnityEngine.Random.Range(0, bulletSounds.Length);
-            _bulletAudioSource.PlayOneShot(bulletSounds[randomSoundIndex]);
+            _audio.PlayOneShot(bulletSounds[randomSoundIndex]);
         }
     }
 }
