@@ -8,12 +8,14 @@ namespace NewKris.Runtime.Ship.Weapons {
     public class MachineGun : Weapon {
         public GameObject bulletPrefab;
         public Transform[] bulletSpawns;
+        public AudioClip[] bulletSounds;
         public float fireRate;
         
         private bool _firing;
         private int _nextSpawnIndex;
         private Timer _fireCooldown;
         private PrefabPool _bulletPool;
+        private AudioSource _bulletAudioSource;
             
         public override void BeginFire() {
             _firing = true;
@@ -28,6 +30,8 @@ namespace NewKris.Runtime.Ship.Weapons {
             _bulletPool = new PrefabPool(bulletPrefab, projectileParent, 100, 50);
 
             _fireCooldown = TimerManager.CreateTimer();
+            
+            _bulletAudioSource = GetComponent<AudioSource>();
         }
 
         private void OnDestroy() {
@@ -47,9 +51,15 @@ namespace NewKris.Runtime.Ship.Weapons {
             if (_bulletPool.GetObject(out GameObject bullet)) {
                 bullet.transform.position = bulletSpawns[_nextSpawnIndex].position;
                 bullet.gameObject.SetActive(true);
+                PlayBulletSound();
 
                 _nextSpawnIndex = (_nextSpawnIndex + 1) % bulletSpawns.Length;
             }
+        }
+
+        private void PlayBulletSound() {
+            int randomSoundIndex = UnityEngine.Random.Range(0, bulletSounds.Length);
+            _bulletAudioSource.PlayOneShot(bulletSounds[randomSoundIndex]);
         }
     }
 }
