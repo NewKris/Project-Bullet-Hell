@@ -7,10 +7,11 @@ using UnityEngine.Pool;
 namespace NewKris.Runtime.Ship.Weapons {
     public class MachineGun : Weapon {
         public GameObject bulletPrefab;
-        public Transform bulletSpawn;
+        public Transform[] bulletSpawns;
         public float fireRate;
         
         private bool _firing;
+        private int _nextSpawnIndex;
         private Timer _fireCooldown;
         private PrefabPool _bulletPool;
             
@@ -44,8 +45,10 @@ namespace NewKris.Runtime.Ship.Weapons {
 
         private void SpawnBullet() {
             if (_bulletPool.GetObject(out GameObject bullet)) {
-                bullet.transform.position = bulletSpawn.position;
+                bullet.transform.position = bulletSpawns[_nextSpawnIndex].position;
                 bullet.gameObject.SetActive(true);
+
+                _nextSpawnIndex = (_nextSpawnIndex + 1) % bulletSpawns.Length;
             }
         }
     }
