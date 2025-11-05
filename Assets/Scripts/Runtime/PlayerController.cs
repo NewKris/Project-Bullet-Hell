@@ -12,7 +12,8 @@ namespace NewKris.Runtime {
         private static PlayerController Instance;
 
         public int shipActionMap = 0;
-        
+
+        private bool _isPaused;
         private InputAction _aimAction;
         
         public static Vector2 MousePosition { get; private set; }
@@ -26,6 +27,8 @@ namespace NewKris.Runtime {
             InputSystem.actions["Fire2"].performed += _ => OnBeginFire2?.Invoke();
             InputSystem.actions["Fire2"].canceled += _ => OnEndFire2?.Invoke();
             
+            InputSystem.actions["Pause"].performed += _ => PauseGame();
+            
             InputSystem.actions.actionMaps[shipActionMap].Enable();
         }
 
@@ -35,6 +38,11 @@ namespace NewKris.Runtime {
 
         private void Update() {
             MousePosition = _aimAction.ReadValue<Vector2>();
+        }
+
+        private void PauseGame() {
+            _isPaused = !_isPaused;
+            Time.timeScale = _isPaused ? 0 : 1;
         }
     }
 }

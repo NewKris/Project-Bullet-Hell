@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 namespace NewKris.Runtime.Combat {
     public class HurtBox : MonoBehaviour {
+        public static event Action<HurtBox> OnDeath; 
+        
         public int maxHealth;
         public Faction isFaction;
         public UnityEvent onHurt;
@@ -18,6 +20,7 @@ namespace NewKris.Runtime.Combat {
             onHurt.Invoke();
 
             if (_health <= 0) {
+                OnDeath?.Invoke(this);
                 onDeath.Invoke();
             }
         }

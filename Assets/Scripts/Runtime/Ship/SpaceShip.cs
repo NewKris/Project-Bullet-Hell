@@ -57,6 +57,10 @@ namespace NewKris.Runtime.Ship {
         }
 
         private void Update() {
+            if (Time.timeScale == 0) {
+                return;
+            }
+            
             Move();
             RotateModel();
         }

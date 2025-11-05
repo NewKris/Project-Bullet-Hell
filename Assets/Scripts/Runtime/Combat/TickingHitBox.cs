@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +11,7 @@ namespace NewKris.Runtime.Combat {
         public UnityEvent onHit;
 
         private float _lastTick;
+        private readonly List<HurtBox> _hurtBoxes = new List<HurtBox>(10);
         
         private bool TickElapsed => Time.time - _lastTick > tickRate;
         
@@ -16,16 +19,48 @@ namespace NewKris.Runtime.Combat {
             gameObject.layer = LayerMask.NameToLayer("Hit Box");
         }
 
-        private void OnTriggerStay(Collider other) {
-            if (TickElapsed && other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.isFaction)) {
-                hurtBox.TakeDamage(damage);
-                onHit.Invoke();
-                _lastTick = Time.time;
+        private void OnTriggerEnter(Collider other) {
+            if (other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.isFaction)) {
+                _hurtBoxes.Add(hurtBox);
             }
         }
-        
+
+        private void OnTriggerExit(Collider other) {
+            if (other.TryGetComponent(out HurtBox hurtBox)) {
+                RemoveFromList(hurtBox);
+            }
+        }
+
+        private void OnEnable() {
+            _hurtBoxes.Clear();
+            HurtBox.OnDeath += RemoveFromList;
+        }
+
+        private void OnDisable() {
+            HurtBox.OnDeath -= RemoveFromList;
+        }
+
+        private void Update() {
+            if (!TickElapsed) {
+                return;
+            }
+
+            for (int i = _hurtBoxes.Count - 1; i >= 0; i--) {
+                _hurtBoxes[i].TakeDamage(damage);
+                onHit?.Invoke();
+            }
+            
+            _lastTick = Time.time;
+        }
+
         private bool CanHurtFaction(Faction faction) {
             return (canHitFaction & faction) != 0;
+        }
+
+        private void RemoveFromList(HurtBox hurtBox) {
+            if (_hurtBoxes.Contains(hurtBox)) {
+                _hurtBoxes.Remove(hurtBox);
+            }
         }
     }
 }

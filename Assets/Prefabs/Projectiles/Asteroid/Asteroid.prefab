@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3558474493663139207}
   - component: {fileID: 3154555028477304940}
   - component: {fileID: 482036989268355655}
+  - component: {fileID: 5124917191381096351}
   m_Layer: 7
   m_Name: Asteroid
   m_TagString: Untagged
@@ -89,7 +90,19 @@ MonoBehaviour:
   isFaction: 4
   onHurt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5124917191381096351}
+        m_TargetAssemblyTypeName: NewKris.Runtime.Combat.EntityFlash, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -147,6 +160,20 @@ MonoBehaviour:
   maxTumbleSpeed: 50
   minTumbleSpeed: 20
   pivot: {fileID: 2441426965714530561}
+--- !u!114 &5124917191381096351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635308206193567391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc03e8c573a42fea80d75fa74bd0fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.EntityFlash
+  flashDecreaseSpeed: 15
+  meshRenderer: {fileID: 13710751484493221}
 --- !u!1 &1112291422318957967
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b8b356b3449f5e94f85a68222a38fe96, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,7 +312,19 @@ MonoBehaviour:
   canHitFaction: 3
   onHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 635308206193567391}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!135 &8266097467697750701
 SphereCollider:
   m_ObjectHideFlags: 0
