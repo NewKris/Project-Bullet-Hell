@@ -1,7 +1,8 @@
+using NewKris.Runtime.Utility.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace NewKris.Runtime.Utility.Attributes.Editor {
+namespace NewKris.Editor {
     [CustomPropertyDrawer(typeof(ReadOnly))]
     public class ReadOnlyDrawer : PropertyDrawer {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
