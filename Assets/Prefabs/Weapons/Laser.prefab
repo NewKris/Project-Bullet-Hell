@@ -318,7 +318,8 @@ GameObject:
   - component: {fileID: 8215256217913707367}
   - component: {fileID: 6669614522787799632}
   - component: {fileID: 2472049951530303624}
-  m_Layer: 0
+  - component: {fileID: 5259082033637233395}
+  m_Layer: 7
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,3 +420,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5259082033637233395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094319816521541257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfece53b5b1645c990f82bd90414b8fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.TickingHitBox
+  damage: 1
+  tickRate: 0.1
+  canHitFaction: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []

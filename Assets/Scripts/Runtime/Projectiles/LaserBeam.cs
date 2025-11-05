@@ -1,4 +1,5 @@
 using System;
+using NewKris.Runtime.Combat;
 using UnityEngine;
 
 namespace NewKris.Runtime.Projectiles {
