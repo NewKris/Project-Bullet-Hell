@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6976101877820008645}
   - component: {fileID: 3558474493663139207}
   - component: {fileID: 3154555028477304940}
+  - component: {fileID: 482036989268355655}
   m_Layer: 7
   m_Name: Asteroid
   m_TagString: Untagged
@@ -131,6 +132,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &482036989268355655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635308206193567391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f674fca2123a4d8b8c015c5f624290c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Environment.Tumbler
+  maxTumbleSpeed: 50
+  minTumbleSpeed: 20
+  pivot: {fileID: 2441426965714530561}
 --- !u!1 &1112291422318957967
 GameObject:
   m_ObjectHideFlags: 0
