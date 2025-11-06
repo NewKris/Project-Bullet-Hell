@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Projectiles.Missile
   maxFlightSpeed: 0
   maxTurningSpeed: 0
-  detectionAngle: 60
+  detectionAngle: 90
   detectionRange: 50
 --- !u!1 &2084709009
 GameObject:
