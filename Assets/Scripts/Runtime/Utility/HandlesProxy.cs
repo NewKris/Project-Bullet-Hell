@@ -1,4 +1,5 @@
 ﻿using NewKris.Runtime.Utility.Extensions;
+using UnityEditor;
 using UnityEngine;
 
 namespace NewKris.Runtime.Utility {
@@ -80,15 +81,15 @@ namespace NewKris.Runtime.Utility {
 #if UNITY_EDITOR
             UnityEditor.Handles.color = color;
             
-            Vector3 p1 = position + rotation * size.Scale(-0.5f, 0.5f, 0.5f);
-            Vector3 p2 = position +  rotation * size.Scale(0.5f, 0.5f, 0.5f);
-            Vector3 p3 = position + rotation * size.Scale(0.5f, -0.5f, 0.5f);
-            Vector3 p4 = position + rotation * size.Scale(-0.5f, -0.5f, 0.5f);
+            Vector3 p1 = position + rotation * size.CScale(-0.5f, 0.5f, 0.5f);
+            Vector3 p2 = position +  rotation * size.CScale(0.5f, 0.5f, 0.5f);
+            Vector3 p3 = position + rotation * size.CScale(0.5f, -0.5f, 0.5f);
+            Vector3 p4 = position + rotation * size.CScale(-0.5f, -0.5f, 0.5f);
             
-            Vector3 p5 = position + rotation * size.Scale(-0.5f, 0.5f, -0.5f);
-            Vector3 p6 = position +  rotation * size.Scale(0.5f, 0.5f, -0.5f);
-            Vector3 p7 = position + rotation * size.Scale(0.5f, -0.5f, -0.5f);
-            Vector3 p8 = position + rotation * size.Scale(-0.5f, -0.5f, -0.5f);
+            Vector3 p5 = position + rotation * size.CScale(-0.5f, 0.5f, -0.5f);
+            Vector3 p6 = position +  rotation * size.CScale(0.5f, 0.5f, -0.5f);
+            Vector3 p7 = position + rotation * size.CScale(0.5f, -0.5f, -0.5f);
+            Vector3 p8 = position + rotation * size.CScale(-0.5f, -0.5f, -0.5f);
 
             if (wired) {
                 DrawLine(p1, p2, thickness, false, color);
@@ -118,10 +119,10 @@ namespace NewKris.Runtime.Utility {
             float thickness = 1
         ) {
 #if UNITY_EDITOR
-            Vector3 p1 = position + rotation * size.Scale(-0.5f, 0.5f);
-            Vector3 p2 = position +  rotation * size.Scale(0.5f, 0.5f);
-            Vector3 p3 = position + rotation * size.Scale(0.5f, -0.5f);
-            Vector3 p4 = position + rotation * size.Scale(-0.5f, -0.5f);
+            Vector3 p1 = position + rotation * size.CScale(-0.5f, 0.5f);
+            Vector3 p2 = position +  rotation * size.CScale(0.5f, 0.5f);
+            Vector3 p3 = position + rotation * size.CScale(0.5f, -0.5f);
+            Vector3 p4 = position + rotation * size.CScale(-0.5f, -0.5f);
             
             if (wired) {
                 DrawLine(p1, p2, thickness, false, color);
@@ -222,6 +223,38 @@ namespace NewKris.Runtime.Utility {
 
                     DrawBezier(c1, top, t1, t2, thickness, color);
                     DrawBezier(c2, bottom, t3, t4, thickness, color);
+                }
+            }
+#endif
+        }
+        
+        public static void DrawArc(
+            Vector3 position,
+            Vector3 forward, 
+            Vector3 up,
+            float angle,
+            float radius,
+            int resolution,
+            float thickness, 
+            Color color
+        ) {
+#if UNITY_EDITOR
+            Handles.color = color;
+            float startAngle = angle * -0.5f;
+            float stepSize = angle / resolution;
+
+            Vector3[] points = new Vector3[resolution + 1];
+            
+            for (int i = 0; i <= resolution; i++) {
+                Quaternion q = Quaternion.AngleAxis(startAngle + stepSize * i, up);
+                points[i] = q * forward * radius;
+
+                if (i == 0 || i == resolution) {
+                    Handles.DrawLine(position, points[i], thickness);
+                }
+                
+                if (i > 0) {
+                    Handles.DrawLine(points[i - 1], points[i], thickness);
                 }
             }
 #endif

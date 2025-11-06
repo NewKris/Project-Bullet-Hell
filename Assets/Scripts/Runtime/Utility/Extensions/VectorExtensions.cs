@@ -14,12 +14,17 @@ namespace NewKris.Runtime.Utility.Extensions {
 			return new Vector3(vector.x, 0, vector.z);
 		}
 
-		public static Vector2 Scale(this Vector2 vector, float scaleX, float scaleY) {
+		public static Vector2 CScale(this Vector2 vector, float scaleX, float scaleY) {
 			return new Vector2(vector.x * scaleX, vector.y * scaleY);
 		}
 		
-		public static Vector3 Scale(this Vector3 vector, float scaleX, float scaleY, float scaleZ) {
+		public static Vector3 CScale(this Vector3 vector, float scaleX, float scaleY, float scaleZ) {
 			return new Vector3(vector.x * scaleX, vector.y * scaleY, vector.z * scaleZ);
 		}
+        
+        public static Vector3 CScale(this Vector3 vector, Vector3 scale) {
+            vector.Scale(scale);
+            return vector;
+        }
 	}
 }
