@@ -5,8 +5,8 @@ namespace NewKris.Runtime.Combat {
     public class EntityFlash : MonoBehaviour {
         private static readonly int FlashStrength = Shader.PropertyToID("_Flash_Strength");
 
-        public float flashDecreaseSpeed;
-        public MeshRenderer meshRenderer;
+        public float flashDecreaseSpeed = 15;
+        public MeshRenderer[] meshRenderers;
 
         private float _flashStrength;
         private MaterialPropertyBlock _materialPropertyBlock;
@@ -18,7 +18,7 @@ namespace NewKris.Runtime.Combat {
         private void Awake() {
             _materialPropertyBlock = new MaterialPropertyBlock();
             _materialPropertyBlock.SetFloat(FlashStrength, 0);
-            meshRenderer.SetPropertyBlock(_materialPropertyBlock);
+            UpdateAllRenderers();
         }
 
         private void Update() {
@@ -26,7 +26,13 @@ namespace NewKris.Runtime.Combat {
             _flashStrength = Mathf.Clamp01(_flashStrength);
             
             _materialPropertyBlock.SetFloat(FlashStrength, _flashStrength);
-            meshRenderer.SetPropertyBlock(_materialPropertyBlock);
+            UpdateAllRenderers();
+        }
+
+        private void UpdateAllRenderers() {
+            foreach (MeshRenderer meshRenderer in meshRenderers) {
+                meshRenderer.SetPropertyBlock(_materialPropertyBlock);
+            }
         }
     }
 }

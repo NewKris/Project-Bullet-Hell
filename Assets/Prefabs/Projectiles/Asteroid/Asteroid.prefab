@@ -173,7 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.EntityFlash
   flashDecreaseSpeed: 15
-  meshRenderer: {fileID: 13710751484493221}
+  meshRenderers:
+  - {fileID: 13710751484493221}
 --- !u!1 &1112291422318957967
 GameObject:
   m_ObjectHideFlags: 0

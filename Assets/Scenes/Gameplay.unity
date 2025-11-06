@@ -987,7 +987,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 079040b7d17088c4981122d790da2580, type: 2}
+  - {fileID: 2100000, guid: 2255f7d2d59fad14d832c74585d2cace, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1305,7 +1305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 079040b7d17088c4981122d790da2580, type: 2}
+  - {fileID: 2100000, guid: 2255f7d2d59fad14d832c74585d2cace, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1482,6 +1482,7 @@ GameObject:
   - component: {fileID: 1782283855}
   - component: {fileID: 1782283856}
   - component: {fileID: 1782283857}
+  - component: {fileID: 1782283858}
   m_Layer: 6
   m_Name: Ship
   m_TagString: Player
@@ -1571,7 +1572,19 @@ MonoBehaviour:
   isFaction: 1
   onHurt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1782283858}
+        m_TargetAssemblyTypeName: NewKris.Runtime.Combat.EntityFlash, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1596,6 +1609,23 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.01
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1782283858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782283852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc03e8c573a42fea80d75fa74bd0fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.EntityFlash
+  flashDecreaseSpeed: 15
+  meshRenderers:
+  - {fileID: 1841008556}
+  - {fileID: 1439718818}
+  - {fileID: 997556610}
 --- !u!1 &1783346288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1735,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 079040b7d17088c4981122d790da2580, type: 2}
+  - {fileID: 2100000, guid: 2255f7d2d59fad14d832c74585d2cace, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
