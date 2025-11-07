@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6404899523013637317}
   - component: {fileID: 4467328143781085440}
   - component: {fileID: 1262384340715485278}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Friendly Pellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HitBox
   damage: 1
-  canHitFaction: 6
+  canHitFaction:
+    serializedVersion: 2
+    m_Bits: 384
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -110,7 +112,7 @@ GameObject:
   - component: {fileID: 366188677456036505}
   - component: {fileID: 3299447424195124655}
   - component: {fileID: 8116756547947298765}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

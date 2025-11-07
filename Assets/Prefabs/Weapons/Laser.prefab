@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 6669614522787799632}
   - component: {fileID: 2472049951530303624}
   - component: {fileID: 5259082033637233395}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.TickingHitBox
   damage: 2
   tickRate: 0.1
-  canHitFaction: 6
+  canHitFaction:
+    serializedVersion: 2
+    m_Bits: 384
   onHit:
     m_PersistentCalls:
       m_Calls: []

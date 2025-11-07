@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4917744826779049831}
   - component: {fileID: 8240261284151219404}
   - component: {fileID: 1922576216258673464}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HitBox
   damage: 5
-  canHitFaction: 2
+  canHitFaction:
+    serializedVersion: 2
+    m_Bits: 384
   onHit:
     m_PersistentCalls:
       m_Calls: []

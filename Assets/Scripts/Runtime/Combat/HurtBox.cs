@@ -7,7 +7,6 @@ namespace NewKris.Runtime.Combat {
         public static event Action<HurtBox> OnDeath; 
         
         public int maxHealth;
-        public Faction isFaction;
         public UnityEvent onHurt;
         public UnityEvent onDeath;
         

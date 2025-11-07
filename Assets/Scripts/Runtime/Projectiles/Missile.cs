@@ -14,7 +14,7 @@ namespace NewKris.Runtime.Projectiles {
         public float maxTurningSpeed;
         
         [Header("Detection")]
-        public Faction detectFaction;
+        public LayerMask detectFaction;
         public float detectionAngle;
         public float detectionRange;
 

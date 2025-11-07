@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 1335538765}
   - component: {fileID: 1335538764}
   - component: {fileID: 1335538763}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Projectile Killzone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HurtBox
   maxHealth: 0
-  isFaction: -1
   onHurt:
     m_PersistentCalls:
       m_Calls: []
@@ -1701,7 +1700,7 @@ GameObject:
   - component: {fileID: 1584662936}
   - component: {fileID: 1584662935}
   - component: {fileID: 1584662938}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Projectile Killzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1784,7 +1783,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HurtBox
   maxHealth: 0
-  isFaction: -1
   onHurt:
     m_PersistentCalls:
       m_Calls: []
@@ -2022,7 +2020,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HurtBox
   maxHealth: 100
-  isFaction: 1
   onHurt:
     m_PersistentCalls:
       m_Calls:

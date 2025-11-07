@@ -11,7 +11,7 @@ namespace NewKris.Runtime.Projectiles {
         
         private PrefabPool _explosionPool;
         
-        public static void SpawnExplosion(Vector3 position, Faction targetFaction, int damage) {
+        public static void SpawnExplosion(Vector3 position, LayerMask targetFaction, int damage) {
             if (Instance._explosionPool.GetObject(out GameObject explosion)) {
                 HitBox explosionHitBox = explosion.GetComponent<HitBox>();
                 

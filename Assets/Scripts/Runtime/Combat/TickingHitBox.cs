@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +8,7 @@ namespace NewKris.Runtime.Combat {
     public class TickingHitBox : MonoBehaviour {
         public int damage;
         public float tickRate;
-        public Faction canHitFaction;
+        public LayerMask canHitFaction;
         public UnityEvent onHit;
 
         private float _lastTick;
@@ -20,7 +21,7 @@ namespace NewKris.Runtime.Combat {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.isFaction)) {
+            if (other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.gameObject.layer)) {
                 _hurtBoxes.Add(hurtBox);
             }
         }
@@ -53,8 +54,8 @@ namespace NewKris.Runtime.Combat {
             _lastTick = Time.time;
         }
 
-        private bool CanHurtFaction(Faction faction) {
-            return (canHitFaction & faction) != 0;
+        private bool CanHurtFaction(LayerMask faction) {
+            return canHitFaction.ContainstLayer(faction);
         }
 
         private void RemoveFromList(HurtBox hurtBox) {

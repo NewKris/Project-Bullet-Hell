@@ -12,9 +12,9 @@ TagManager:
   - Projectile
   - Water
   - UI
-  - Hurt Box
-  - Hit Box
-  - 
+  - Friendly
+  - Enemy
+  - Environment
   - 
   - 
   - 

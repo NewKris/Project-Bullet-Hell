@@ -1,26 +1,23 @@
 using System;
+using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace NewKris.Runtime.Combat {
     public class HitBox : MonoBehaviour {
         public int damage;
-        public Faction canHitFaction;
+        public LayerMask canHitFaction;
         public UnityEvent<Vector3> onHit;
-        
-        private void Reset() {
-            gameObject.layer = LayerMask.NameToLayer("Hit Box");
-        }
 
         private void OnTriggerEnter(Collider other) {
-            if (other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.isFaction)) {
+            if (other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.gameObject.layer)) {
                 hurtBox.TakeDamage(damage);
                 onHit.Invoke(other.ClosestPoint(transform.position));
             }
         }
 
-        private bool CanHurtFaction(Faction faction) {
-            return (canHitFaction & faction) != 0;
+        private bool CanHurtFaction(LayerMask faction) {
+            return canHitFaction.ContainstLayer(faction);
         }
     }
 }

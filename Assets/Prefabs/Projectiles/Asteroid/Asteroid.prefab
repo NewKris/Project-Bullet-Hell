@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3154555028477304940}
   - component: {fileID: 482036989268355655}
   - component: {fileID: 5124917191381096351}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HurtBox
   maxHealth: 5
-  isFaction: 4
   onHurt:
     m_PersistentCalls:
       m_Calls:
@@ -186,7 +185,7 @@ GameObject:
   - component: {fileID: 2441426965714530561}
   - component: {fileID: 3377034750823394831}
   - component: {fileID: 13710751484493221}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +274,7 @@ GameObject:
   - component: {fileID: 5378423738023153472}
   - component: {fileID: 4529840043340964381}
   - component: {fileID: 8266097467697750701}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Hit Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HitBox
   damage: 10
-  canHitFaction: 3
+  canHitFaction:
+    serializedVersion: 2
+    m_Bits: 448
   onHit:
     m_PersistentCalls:
       m_Calls:
