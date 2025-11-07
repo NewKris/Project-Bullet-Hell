@@ -1,0 +1,31 @@
+using System;
+using NewKris.Runtime.Combat;
+using NewKris.Runtime.Utility.CommonObjects;
+using UnityEngine;
+
+namespace NewKris.Runtime.Projectiles {
+    public class ExplosionSystem : MonoBehaviour {
+        private static ExplosionSystem Instance;
+
+        public GameObject explosionPrefab;
+        
+        private PrefabPool _explosionPool;
+        
+        public static void SpawnExplosion(Vector3 position, Faction targetFaction, int damage) {
+            if (Instance._explosionPool.GetObject(out GameObject explosion)) {
+                HitBox explosionHitBox = explosion.GetComponent<HitBox>();
+                
+                explosion.transform.position = position;
+                explosionHitBox.canHitFaction = targetFaction;
+                explosionHitBox.damage = damage;
+                
+                explosion.SetActive(true);
+            }
+        }
+
+        private void Awake() {
+            Instance = this;
+            _explosionPool = new PrefabPool(explosionPrefab, transform, 50, 50);
+        }
+    }
+}

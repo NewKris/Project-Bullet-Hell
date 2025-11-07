@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5050073548779238725}
+  - component: {fileID: 6759616465507008215}
   m_Layer: 0
   m_Name: Missile Launcher
   m_TagString: Untagged
@@ -30,8 +31,24 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7931772191259586386}
+  - {fileID: 3878077802287179997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6759616465507008215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074108759804934128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b4477bd14148ef816ec6962a435417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.MissileLauncher
+  fireRate: 1
+  missilePrefab: {fileID: 581578276968073619, guid: 7c2ed987a9499da42a4f9fdeef4bcc4f, type: 3}
+  missileSpawn: {fileID: 3878077802287179997}
 --- !u!1 &1311127097457155047
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,3 +138,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2832033813397221276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3878077802287179997}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3878077802287179997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832033813397221276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5050073548779238725}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

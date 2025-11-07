@@ -34,6 +34,7 @@ namespace NewKris.Runtime.Utility.CommonObjects {
             }
             
             result = Object.Instantiate(_prefab, _parent);
+            result.SetActive(false);
             _pool.Add(result);
             
             return true;

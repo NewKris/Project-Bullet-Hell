@@ -247,7 +247,7 @@ namespace NewKris.Runtime.Utility {
             
             for (int i = 0; i <= resolution; i++) {
                 Quaternion q = Quaternion.AngleAxis(startAngle + stepSize * i, up);
-                points[i] = q * forward * radius;
+                points[i] = position + q * forward * radius;
 
                 if (i == 0 || i == resolution) {
                     Handles.DrawLine(position, points[i], thickness);

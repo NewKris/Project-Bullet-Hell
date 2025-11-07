@@ -181,17 +181,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8812882658074780600, guid: 1d3938fe5ead6e7459088ae40da012e0, type: 3}
   m_PrefabInstance: {fileID: 13739388}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &13739390 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2276142413011848549, guid: 1d3938fe5ead6e7459088ae40da012e0, type: 3}
-  m_PrefabInstance: {fileID: 13739388}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5007869225754609b10093d25ea642e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.Laser
 --- !u!1 &277621312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1791,63 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &1613033518
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399248840319580898, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462135874830250021, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
+      propertyPath: m_Name
+      value: Explosion System
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b661c10d95543a74086cedc1d1a5377e, type: 3}
 --- !u!1001 &1659339889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1932,7 +1978,7 @@ MonoBehaviour:
   maxRoll: 30
   rollDamping: 0.1
   weapon1: {fileID: 1659339891}
-  weapon2: {fileID: 13739390}
+  weapon2: {fileID: 2648265549517027575}
   modelPivot: {fileID: 930702207}
   boundary: {fileID: 1856565996}
   reticle: {fileID: 425118565}
@@ -2507,6 +2553,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66924209fa0e2154e9f6c7c2e0e86631, type: 3}
+--- !u!114 &2648265549517027575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6759616465507008215, guid: 66924209fa0e2154e9f6c7c2e0e86631, type: 3}
+  m_PrefabInstance: {fileID: 2648265549517027573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b4477bd14148ef816ec6962a435417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.MissileLauncher
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2532,3 +2589,4 @@ SceneRoots:
   - {fileID: 703686729}
   - {fileID: 1584662937}
   - {fileID: 1335538766}
+  - {fileID: 1613033518}
