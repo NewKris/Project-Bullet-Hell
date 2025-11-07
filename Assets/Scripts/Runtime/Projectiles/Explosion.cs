@@ -2,13 +2,14 @@ using System;
 using UnityEngine;
 
 namespace NewKris.Runtime.Projectiles {
-    public class LifeTime : MonoBehaviour {
+    public class Explosion : MonoBehaviour {
         public float lifeTime;
 
         private float _spawnTime;
 
         private void OnEnable() {
             _spawnTime = Time.time;
+            GetComponent<AudioSource>().Play();
         }
 
         private void Update() {

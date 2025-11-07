@@ -7,9 +7,11 @@ namespace NewKris.Runtime.Ship.Weapons {
         public float fireRate;
         public GameObject missilePrefab;
         public Transform missileSpawn;
+        public AudioClip fireSound;
         
         private float _lastFire;
         private PrefabPool _missilePool;
+        private AudioSource _audio;
         
         public override void BeginFire() {
             if (Time.time - _lastFire < fireRate) {
@@ -20,6 +22,7 @@ namespace NewKris.Runtime.Ship.Weapons {
                 missile.transform.position = missileSpawn.position;
                 missile.transform.rotation = Quaternion.identity;
                 missile.SetActive(true);
+                _audio.PlayOneShot(fireSound);
             }
             
             _lastFire = Time.time;
@@ -30,6 +33,7 @@ namespace NewKris.Runtime.Ship.Weapons {
         private void Awake() {
             Transform projectileParent = GameObject.FindGameObjectWithTag("Projectile Parent").transform;
             _missilePool = new PrefabPool(missilePrefab, projectileParent, 10, 10);
+            _audio = GetComponent<AudioSource>();
         }
     }
 }
