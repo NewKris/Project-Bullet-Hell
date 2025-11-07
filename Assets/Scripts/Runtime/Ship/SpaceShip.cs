@@ -47,9 +47,6 @@ namespace NewKris.Runtime.Ship {
             PlayerController.OnEndFire2 += EndFire2;
 
             _position = new DampedVector(transform.position);
-            //HideCursor();
-
-            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnDestroy() {
@@ -57,6 +54,14 @@ namespace NewKris.Runtime.Ship {
             PlayerController.OnEndFire1 -= EndFire1;
             PlayerController.OnBeginFire2 -= BeginFire2;
             PlayerController.OnEndFire2 -= EndFire2;
+        }
+
+        private void OnEnable() {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        private void OnDisable() {
+            Cursor.lockState = CursorLockMode.None;
         }
 
         private void Update() {
