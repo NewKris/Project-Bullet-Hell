@@ -7,10 +7,16 @@ using UnityEngine;
 namespace NewKris.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
         public float sensitivity;
+
+        [Header("Parameters")] 
+        [Range(0,1 )] public float moveSpeed;
+        [Range(0,1 )] public float responsiveness;
         
-        [Header("Parameters")]
+        [Header("Movement")]
         public float maxMoveSpeed;
-        public float moveDamping;
+        public float minMoveSpeed;
+        public float maxMoveDamping;
+        public float minMoveDamping;
 
         [Header("Pitch")] 
         public float maxPitch;
@@ -29,10 +35,13 @@ namespace NewKris.Runtime.Ship {
         public Boundary boundary;
         public Transform reticle;
 
+        private Vector3 _velocity;
         private DampedVector _position;
         private DampedAngle _roll;
         private DampedAngle _pitch;
-        private readonly Plane _groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        private float TargetSpeed => Mathf.Lerp(minMoveSpeed, maxMoveSpeed, moveSpeed);
+        private float TargetDamping => Mathf.Lerp(minMoveDamping, maxMoveDamping, 1 - responsiveness);
 
         private void OnGUI() {
             GUILayout.BeginArea(new Rect(10, 10, 100, 100));
@@ -74,12 +83,16 @@ namespace NewKris.Runtime.Ship {
         }
 
         private void Move() {
+            Vector3 previousPosition = transform.position;
+            
             _position.Target = MouseToTargetPosition();
             _position.Target = Vector3.Max(boundary.MinCorner, _position.Target);
             _position.Target = Vector3.Min(boundary.MaxCorner, _position.Target);
             
-            transform.position = _position.Tick(moveDamping, maxMoveSpeed);
+            transform.position = _position.Tick(TargetDamping, TargetSpeed);
             reticle.position = _position.Target;
+
+            _velocity = (transform.position - previousPosition) / Time.deltaTime;
         }
 
         private void RotateModel() {
@@ -106,32 +119,15 @@ namespace NewKris.Runtime.Ship {
         }
 
         private float GetTargetRoll() {
-            return (_position.Velocity.x / maxMoveSpeed) * maxRoll;
+            return (_velocity.x / TargetSpeed) * maxRoll;
         }
 
         private float GetTargetPitch() {
-            return (_position.Velocity.z / maxMoveSpeed) * maxPitch;
+            return (_velocity.z / TargetSpeed) * maxPitch;
         }
 
         private Vector3 MouseToTargetPosition() {
-            //Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
-            //
-            //if (_groundPlane.Raycast(ray, out float enter)) {
-            //    return ray.GetPoint(enter);
-            //}
-            //else {
-            //    return _position.Target;
-            //}
-
             return _position.Target + PlayerController.MousePosition.ProjectOnGround() * sensitivity;
-        }
-
-        private void HideCursor() {
-            Texture2D texture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            texture.SetPixel(0, 0, Color.clear);
-            texture.Apply();
-            Cursor.SetCursor(texture, Vector2.zero, CursorMode.Auto);
-            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }

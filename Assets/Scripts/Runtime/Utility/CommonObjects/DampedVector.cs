@@ -7,7 +7,6 @@ namespace NewKris.Runtime.Utility.CommonObjects {
 
 		public Vector3 Current { get; private set; }
 		public Vector3 Target { get; set; }
-		public Vector3 Velocity => _velocity;
 
 		public DampedVector(Vector3 startValue) {
 			Current = startValue;
