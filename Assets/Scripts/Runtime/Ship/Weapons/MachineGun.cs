@@ -1,4 +1,5 @@
 using System;
+using NewKris.Runtime.Projectiles;
 using NewKris.Runtime.Utility.CommonObjects;
 using NewKris.Runtime.Utility.Timers;
 using UnityEngine;
@@ -6,7 +7,6 @@ using UnityEngine.Pool;
 
 namespace NewKris.Runtime.Ship.Weapons {
     public class MachineGun : Weapon {
-        public GameObject bulletPrefab;
         public Transform[] bulletSpawns;
         public AudioClip[] bulletSounds;
         public float fireRate;
@@ -14,7 +14,6 @@ namespace NewKris.Runtime.Ship.Weapons {
         private bool _firing;
         private int _nextSpawnIndex;
         private float _lastFiredTime;
-        private PrefabPool _bulletPool;
         private AudioSource _audio;
         
         private float TimeSinceLastBullet => Time.time - _lastFiredTime;
@@ -28,9 +27,6 @@ namespace NewKris.Runtime.Ship.Weapons {
         }
 
         private void Awake() {
-            Transform projectileParent = GameObject.FindGameObjectWithTag("Projectile Parent").transform;
-            _bulletPool = new PrefabPool(bulletPrefab, projectileParent, 100, 50);
-
             _audio = GetComponent<AudioSource>();
         }
 
@@ -41,8 +37,9 @@ namespace NewKris.Runtime.Ship.Weapons {
         }
 
         private void SpawnBullet() {
-            if (_bulletPool.GetObject(out GameObject bullet)) {
+            if (SimpleProjectileSystem.GetProjectile(out GameObject bullet, ProjectileType.PELLET)) {
                 bullet.transform.position = bulletSpawns[_nextSpawnIndex].position;
+                bullet.transform.rotation = Quaternion.identity;
                 bullet.gameObject.SetActive(true);
                 PlayBulletSound();
 

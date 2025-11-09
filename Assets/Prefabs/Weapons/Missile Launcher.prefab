@@ -49,6 +49,7 @@ MonoBehaviour:
   fireRate: 1
   missilePrefab: {fileID: 581578276968073619, guid: 7c2ed987a9499da42a4f9fdeef4bcc4f, type: 3}
   missileSpawn: {fileID: 3878077802287179997}
+  fireSound: {fileID: 8300000, guid: e87fb2e782bcac14d82191fa02c2c841, type: 3}
 --- !u!1 &1311127097457155047
 GameObject:
   m_ObjectHideFlags: 0

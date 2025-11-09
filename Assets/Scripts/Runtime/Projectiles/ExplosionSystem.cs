@@ -25,7 +25,7 @@ namespace NewKris.Runtime.Projectiles {
 
         private void Awake() {
             Instance = this;
-            _explosionPool = new PrefabPool(explosionPrefab, transform, 50, 50);
+            _explosionPool = new PrefabPool(explosionPrefab, transform, 25);
         }
     }
 }

@@ -4,40 +4,47 @@ using UnityEngine;
 
 namespace NewKris.Runtime.Utility.CommonObjects {
     public class PrefabPool {
-        private readonly int _capacity;
+        private int _cursor;
         private readonly GameObject _prefab;
         private readonly Transform _parent;
-        private readonly HashSet<GameObject> _pool;
+        private readonly GameObject[] _pool;
         
-        public PrefabPool(GameObject prefab, Transform parent, int capacity = 100, int initialSize = 10) {
+        public PrefabPool(GameObject prefab, Transform parent, int capacity = 100) {
             _prefab = prefab;
             _parent = parent;
-            _capacity = capacity;
-            _pool = new HashSet<GameObject>(initialSize);
+            _pool = new GameObject[capacity];
+            _cursor = 0;
         }
 
-        public bool GetObject(out GameObject result) {
-            GameObject firstAvailable = _pool.FirstOrDefault(x => x.activeSelf == false);
-            
-            if (firstAvailable) {
-                result = firstAvailable;
-                return true;
-            }
-            
-            return CreateNewObject(out result);
+        public IEnumerable<GameObject> GetAllActiveObjects() {
+            return _pool.Where(Active);
+        }
+        
+        public bool GetObject(out GameObject obj) {
+            obj = _pool.Where(Available).FirstOrDefault();
+            return obj || TryCreateNewObject(out obj);
         }
 
-        private bool CreateNewObject(out GameObject result) {
-            if (_pool.Count >= _capacity) {
-                result = null;
+        private bool TryCreateNewObject(out GameObject obj) {
+            if (_cursor >= _pool.Length) {
+                obj = null;
                 return false;
             }
+
+            _pool[_cursor] = Object.Instantiate(_prefab, _parent);
+            _pool[_cursor].SetActive(false);
+            obj = _pool[_cursor];
             
-            result = Object.Instantiate(_prefab, _parent);
-            result.SetActive(false);
-            _pool.Add(result);
-            
+            _cursor++;
             return true;
+        }
+
+        private bool Available(GameObject poolObject) {
+            return !poolObject?.activeSelf ?? false;
+        }
+
+        private bool Active(GameObject poolObject) {
+            return poolObject?.activeSelf ?? false;
         }
     }
 }

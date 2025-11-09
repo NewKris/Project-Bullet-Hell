@@ -32,7 +32,7 @@ namespace NewKris.Runtime.Ship.Weapons {
 
         private void Awake() {
             Transform projectileParent = GameObject.FindGameObjectWithTag("Projectile Parent").transform;
-            _missilePool = new PrefabPool(missilePrefab, projectileParent, 10, 10);
+            _missilePool = new PrefabPool(missilePrefab, projectileParent, 10);
             _audio = GetComponent<AudioSource>();
         }
     }

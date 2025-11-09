@@ -3,20 +3,12 @@ using NewKris.Runtime.Ship.Weapons;
 using UnityEngine;
 
 namespace NewKris.Runtime.Projectiles {
-    public class SimpleProjectile : Projectile {
+    public class SimpleProjectile : MonoBehaviour {
         public float maxSpeed;
         public Vector3 direction;
 
         public void Hit() {
             gameObject.SetActive(false);
-        }
-        
-        private void OnEnable() {
-            SimpleProjectileSystem.AddProjectile(this);
-        }
-
-        private void OnDisable() {
-            SimpleProjectileSystem.RemoveProjectile(this);
         }
     }
 }
