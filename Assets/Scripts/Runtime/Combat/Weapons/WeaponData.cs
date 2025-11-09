@@ -6,5 +6,6 @@ namespace NewKris.Runtime.Combat.Weapons {
     public class WeaponData : ScriptableObject {
         public int id;
         public GameObject prefab;
+        public Sprite icon;
     }
 }

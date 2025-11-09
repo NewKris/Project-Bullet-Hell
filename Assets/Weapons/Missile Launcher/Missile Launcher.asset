@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.Weapons.WeaponData
   id: 3
   prefab: {fileID: 1074108759804934128, guid: 66924209fa0e2154e9f6c7c2e0e86631, type: 3}
+  icon: {fileID: 21300000, guid: 2d8e2c04b6df0c844a895ff163e38994, type: 3}
