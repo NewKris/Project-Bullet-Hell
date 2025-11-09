@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f516d04fce2e4b7383121844176c7af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.MachineGun
+  weaponId: 1
   projectileType: 1
   bulletSpawns:
   - {fileID: 7055272216393414922}

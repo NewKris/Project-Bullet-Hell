@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b4477bd14148ef816ec6962a435417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.MissileLauncher
+  weaponId: 3
   fireRate: 1
   missileSpawn: {fileID: 3878077802287179997}
   fireSound: {fileID: 8300000, guid: e87fb2e782bcac14d82191fa02c2c841, type: 3}

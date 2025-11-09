@@ -1,5 +1,8 @@
 using System;
+using System.Linq;
 using NewKris.Runtime.Combat;
+using NewKris.Runtime.Combat.Weapons;
+using NewKris.Runtime.Ship.Equipment;
 using NewKris.Runtime.Utility.CommonObjects;
 using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
@@ -25,12 +28,9 @@ namespace NewKris.Runtime.Ship {
         [Header("Roll")]
         public float maxRoll;
         public float rollDamping;
-
-        [Header("Weapons")] 
-        public Weapon weapon1;
-        public Weapon weapon2;
         
         [Header("Miscs")]
+        public ShipEquipper equipper;
         public Transform modelPivot;
         public Boundary boundary;
         public Transform reticle;
@@ -103,19 +103,19 @@ namespace NewKris.Runtime.Ship {
         }
 
         private void BeginFire1() {
-            weapon1?.BeginFire();
+            equipper.weapon1?.BeginFire();
         }
 
         private void EndFire1() {
-            weapon1?.EndFire();
+            equipper.weapon1?.EndFire();
         }
 
         private void BeginFire2() {
-            weapon2?.BeginFire();
+            equipper.weapon2?.BeginFire();
         }
 
         private void EndFire2() {
-            weapon2?.EndFire();
+            equipper.weapon2?.EndFire();
         }
 
         private float GetTargetRoll() {

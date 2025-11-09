@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5007869225754609b10093d25ea642e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.Laser
+  weaponId: 2
   minChargeTime: 1
   maxChargeTime: 3
   laserDuration: 1.5
