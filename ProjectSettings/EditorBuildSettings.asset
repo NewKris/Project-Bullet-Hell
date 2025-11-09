@@ -6,7 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Gameplay.unity
+    path: Assets/Scenes/Splash Screen.unity
+    guid: 37fddbc65dd51834cb76a740b94d0bf1
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: bd927f82e547f5f4b9f2aeddfdd6e636
+  - enabled: 1
+    path: Assets/Scenes/Hub.unity
+    guid: d23421545fd6e224e99660bf880eafcc
+  - enabled: 1
+    path: Assets/Scenes/Hangar.unity
+    guid: ff5012d80fb8d484bab4ccac3f6a2550
+  - enabled: 1
+    path: Assets/Scenes/Combat.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

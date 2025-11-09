@@ -7,8 +7,12 @@ namespace NewKris.Runtime.Utility.CommonObjects {
         [SerializeField, Range(0, 1)] private float value;
 
         public float Value {
-            get => value;
-            set => this.value = Mathf.Clamp01(value);
+            get {
+                return value;
+            }
+            set {
+                this.value = Mathf.Clamp01(value);
+            }
         }
         
         public Value01(float startValue = 0) {
