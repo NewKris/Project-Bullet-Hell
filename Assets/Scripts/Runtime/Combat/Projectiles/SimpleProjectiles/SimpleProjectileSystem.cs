@@ -38,12 +38,15 @@ namespace Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles {
         }
 
         private void MoveProjectile(SimpleProjectile projectile) {
-            Vector3 velocity = projectile.transform.forward * projectile.travelSpeed * Time.deltaTime;
+            float distance = projectile.travelSpeed * Time.deltaTime;
+            Vector3 velocity = projectile.transform.forward * distance;
+            
             projectile.transform.position += velocity;
+            projectile.travelDistance += distance;
         }
 
         private void ExpireProjectile(SimpleProjectile projectile) {
-            if (Time.time > projectile.spawnTime + projectile.lifeTime) {
+            if (projectile.travelDistance > projectile.maxDistance) {
                 projectile.gameObject.SetActive(false);
             }
         }

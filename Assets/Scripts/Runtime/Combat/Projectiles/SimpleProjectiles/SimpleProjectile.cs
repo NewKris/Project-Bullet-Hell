@@ -7,11 +7,11 @@ namespace Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles {
         public static event Action<SimpleProjectile> OnSpawned;
         
         public float travelSpeed;
-        public float lifeTime;
-        [ReadOnly] public float spawnTime;
+        public float maxDistance;
+        [ReadOnly] public float travelDistance;
 
         private void OnEnable() {
-            spawnTime = Time.time;
+            travelDistance = 0;
             OnSpawned?.Invoke(this);
         }
     }

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles.SimpleProjectile
   travelSpeed: 500
-  lifeTime: 1
-  spawnTime: 0
+  maxDistance: 1000
+  travelDistance: 0
 --- !u!1 &1876554055979681299
 GameObject:
   m_ObjectHideFlags: 0
