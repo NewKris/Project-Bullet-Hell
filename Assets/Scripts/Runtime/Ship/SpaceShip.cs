@@ -8,7 +8,7 @@ using Werehorse.Runtime.Utility.Extensions;
 namespace Werehorse.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
         public float maxFlightSpeed;
-        public float accelerationSpeed;
+        public float maxAcceleration;
 
         [Header("Turning")] 
         public float maxPitchSpeed;
@@ -57,7 +57,7 @@ namespace Werehorse.Runtime.Ship {
             }
             
             Rotate(Time.fixedDeltaTime);
-            Move();
+            Move(Time.fixedDeltaTime);
         }
 
         private void Rotate(float dt) {
@@ -81,9 +81,11 @@ namespace Werehorse.Runtime.Ship {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, maxDelta);
         }
         
-        private void Move() {
+        private void Move(float dt) {
             Vector3 targetVel = transform.forward * maxFlightSpeed;
             Vector3 deltaVel = targetVel - rigidBody.linearVelocity;
+            deltaVel = Vector3.ClampMagnitude(deltaVel, maxAcceleration * dt);
+            
             rigidBody.AddForce(deltaVel, ForceMode.VelocityChange);            
         }
 
