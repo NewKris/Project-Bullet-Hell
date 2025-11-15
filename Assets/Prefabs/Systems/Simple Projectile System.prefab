@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6724877505828566017
+--- !u!1 &3548091397813397508
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5535993094058598759}
-  - component: {fileID: 1977390839298095150}
+  - component: {fileID: 3303347551981956734}
+  - component: {fileID: 7367418804346358229}
   m_Layer: 0
-  m_Name: Projectile System
-  m_TagString: Projectile Parent
+  m_Name: Simple Projectile System
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5535993094058598759
+--- !u!4 &3303347551981956734
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724877505828566017}
+  m_GameObject: {fileID: 3548091397813397508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,18 +32,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1977390839298095150
+--- !u!114 &7367418804346358229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724877505828566017}
+  m_GameObject: {fileID: 3548091397813397508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060f2806eb5340588d92e2900399cc7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ef78cb57c4f4d67bb3be78966cf0534, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.SimpleProjectileSystem
-  riflePrefab: {fileID: 470730067449800906, guid: 307f45488b5cd0947a31317608974376, type: 3}
-  pelletPrefab: {fileID: 470730067449800906, guid: 4b496c6492e094a498f8ea8c22064b02, type: 3}
-  asteroidPrefab: {fileID: 635308206193567391, guid: e1698a601e79e4346a2847becc55f696, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles.SimpleProjectileSystem
+  projectilePrefab: {fileID: 548676673087448684, guid: ec9b088b6c7ab384291b7e53c6de1107, type: 3}
