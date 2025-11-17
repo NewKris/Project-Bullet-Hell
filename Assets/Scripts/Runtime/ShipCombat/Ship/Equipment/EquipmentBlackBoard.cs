@@ -5,7 +5,8 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
     public class EquipmentBlackBoard {
         public static bool HasEquipment { get; private set; }
         public static EquipmentBlackBoard CurrentEquipment { get; private set; }
-        
+
+        public int shipBaseId;
         public int weapon1Id;
         public int weapon2Id;
         

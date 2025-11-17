@@ -1,8 +1,8 @@
 using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Ship.Equipment;
+using Werehorse.Runtime.ShipCombat.Ship.Weapons;
 
-namespace Werehorse.Runtime.ShipCombat.Ship {
-    public class SpaceShip : MonoBehaviour {
+namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
+    public class PlaneShip : MonoBehaviour {
         public float maxFlightSpeed;
         public float maxAcceleration;
 
@@ -13,9 +13,12 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
         public float maxTurnSpeed;
         public float maxTurnAngle;
         public AnimationCurve turnCurve;
+
+        [Header("Weapons")] 
+        public Weapon weapon1;
+        public Weapon weapon2;
         
         [Header("Miscs")]
-        public ShipEquipper equipper;
         public Rigidbody rigidBody;
         public RectTransform reticle;
 
@@ -45,8 +48,10 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
             if (PauseManager.IsPaused) {
                 return;
             }
-            
-            reticle.position = PlayerShipController.MousePosition;
+
+            if (reticle) {
+                reticle.position = PlayerShipController.MousePosition;
+            }
         }
         
         private void FixedUpdate() {
@@ -95,19 +100,19 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
         }
 
         private void BeginFire1() {
-            equipper.weapon1?.BeginFire();
+            weapon1?.BeginFire();
         }
 
         private void EndFire1() {
-            equipper.weapon1?.EndFire();
+            weapon1?.EndFire();
         }
 
         private void BeginFire2() {
-            equipper.weapon2?.BeginFire();
+            weapon2?.BeginFire();
         }
 
         private void EndFire2() {
-            equipper.weapon2?.EndFire();
+            weapon2?.EndFire();
         }
 
         private void ToggleCursorVisibility(bool showCursor) {
