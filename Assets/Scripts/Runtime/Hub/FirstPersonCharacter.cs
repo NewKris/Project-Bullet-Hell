@@ -38,6 +38,8 @@ namespace Werehorse.Runtime.Hub {
         }
 
         private void Awake() {
+            Time.timeScale = 1;
+            
             PlayerHubController.OnInteract += TryInteract;
         }
 
@@ -50,6 +52,11 @@ namespace Werehorse.Runtime.Hub {
         }
 
         private void Update() {
+            if (Time.deltaTime <= 0) {
+                // For some reason this can happen on scene-switch, which causes NaNs on SmoothDamp
+                return;
+            }
+            
             Look(Time.deltaTime);
             Move();
         }

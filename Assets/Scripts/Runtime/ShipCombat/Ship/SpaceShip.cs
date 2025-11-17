@@ -27,8 +27,9 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
             PlayerShipController.OnBeginFire2 += BeginFire2;
             PlayerShipController.OnEndFire2 += EndFire2;
 
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
+            PauseManager.OnPauseToggled += ToggleCursorVisibility;
+            
+            ToggleCursorVisibility(false);
         }
 
         private void OnDestroy() {
@@ -36,10 +37,12 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
             PlayerShipController.OnEndFire1 -= EndFire1;
             PlayerShipController.OnBeginFire2 -= BeginFire2;
             PlayerShipController.OnEndFire2 -= EndFire2;
+            
+            PauseManager.OnPauseToggled -= ToggleCursorVisibility;
         }
 
         private void Update() {
-            if (Time.timeScale == 0) {
+            if (PauseManager.IsPaused) {
                 return;
             }
             
@@ -47,7 +50,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
         }
         
         private void FixedUpdate() {
-            if (Time.timeScale == 0) {
+            if (PauseManager.IsPaused) {
                 return;
             }
             
@@ -105,6 +108,11 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
 
         private void EndFire2() {
             equipper.weapon2?.EndFire();
+        }
+
+        private void ToggleCursorVisibility(bool showCursor) {
+            Cursor.lockState = showCursor ? CursorLockMode.None : CursorLockMode.Confined;
+            Cursor.visible = showCursor;
         }
     }
 }

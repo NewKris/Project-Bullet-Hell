@@ -9,12 +9,12 @@ namespace Werehorse.Runtime.ShipCombat {
         public static event Action OnBeginFire2;
         public static event Action OnEndFire2;
         public static event Action OnTest;
+        public static event Action OnPause;
         
         private static PlayerShipController Instance;
 
         public int shipActionMap = 0;
 
-        private bool _isPaused;
         private InputAction _aimAction;
         private InputAction _rollAction;
         
@@ -22,18 +22,18 @@ namespace Werehorse.Runtime.ShipCombat {
         public static Vector2 MousePosition { get; private set; }
         
         private void Awake() {
-            _aimAction = InputSystem.actions["Aim"];
-            _rollAction = InputSystem.actions["Roll"];
+            _aimAction = InputSystem.actions.actionMaps[shipActionMap]["Aim"];
+            _rollAction = InputSystem.actions.actionMaps[shipActionMap]["Roll"];
             
-            InputSystem.actions["Fire1"].performed += _ => OnBeginFire1?.Invoke();
-            InputSystem.actions["Fire1"].canceled += _ => OnEndFire1?.Invoke();
+            InputSystem.actions.actionMaps[shipActionMap]["Fire1"].performed += _ => OnBeginFire1?.Invoke();
+            InputSystem.actions.actionMaps[shipActionMap]["Fire1"].canceled += _ => OnEndFire1?.Invoke();
 
-            InputSystem.actions["Fire2"].performed += _ => OnBeginFire2?.Invoke();
-            InputSystem.actions["Fire2"].canceled += _ => OnEndFire2?.Invoke();
+            InputSystem.actions.actionMaps[shipActionMap]["Fire2"].performed += _ => OnBeginFire2?.Invoke();
+            InputSystem.actions.actionMaps[shipActionMap]["Fire2"].canceled += _ => OnEndFire2?.Invoke();
             
-            InputSystem.actions["Pause"].performed += _ => PauseGame();
+            InputSystem.actions.actionMaps[shipActionMap]["Pause"].performed += _ => OnPause?.Invoke();
             
-            InputSystem.actions["Test"].performed += _ => OnTest?.Invoke();
+            InputSystem.actions.actionMaps[shipActionMap]["Test"].performed += _ => OnTest?.Invoke();
             
             InputSystem.actions.actionMaps[shipActionMap].Enable();
         }
@@ -45,11 +45,6 @@ namespace Werehorse.Runtime.ShipCombat {
         private void Update() {
             MousePosition = _aimAction.ReadValue<Vector2>();
             Roll = _rollAction.ReadValue<float>();
-        }
-
-        private void PauseGame() {
-            _isPaused = !_isPaused;
-            Time.timeScale = _isPaused ? 0 : 1;
         }
     }
 }

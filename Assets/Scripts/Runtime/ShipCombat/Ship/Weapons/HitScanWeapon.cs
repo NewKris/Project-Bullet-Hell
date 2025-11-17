@@ -21,7 +21,9 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Weapons {
         private bool CanFire => Time.time > _lastFireTime + fireRate;
         
         public override void BeginFire() {
-            _firing = true;
+            if (!PauseManager.IsPaused) {
+                _firing = true;
+            }
         }
 
         public override void EndFire() {
