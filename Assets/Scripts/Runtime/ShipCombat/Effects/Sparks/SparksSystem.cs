@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Utility.CommonObjects;
+using Werehorse.Runtime.Utility.CommonObjects;
 
 namespace Werehorse.Runtime.ShipCombat.Effects.Sparks {
     public class SparksSystem : MonoBehaviour {

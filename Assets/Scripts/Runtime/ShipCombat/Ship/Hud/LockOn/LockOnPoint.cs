@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Utility.Extensions;
+using Werehorse.Runtime.Utility.Extensions;
 
 namespace Werehorse.Runtime.ShipCombat.Ship.Hud.LockOn {
     public class LockOnPoint : MonoBehaviour {

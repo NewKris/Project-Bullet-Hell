@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Utility.CommonObjects;
-using Werehorse.Runtime.ShipCombat.Utility.Extensions;
+using Werehorse.Runtime.Utility.CommonObjects;
+using Werehorse.Runtime.Utility.Extensions;
 
 namespace Werehorse.Runtime.ShipCombat.Combat.Projectiles.FakeProjectiles {
     public class FakeProjectileSystem : MonoBehaviour {

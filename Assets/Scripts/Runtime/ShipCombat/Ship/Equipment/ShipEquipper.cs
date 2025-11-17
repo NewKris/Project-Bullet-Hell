@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using Werehorse.Runtime.ShipCombat.Ship.Weapons;
-using Werehorse.Runtime.ShipCombat.Utility.Attributes;
+using Werehorse.Runtime.Utility.Attributes;
 
 namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
     public class ShipEquipper : MonoBehaviour {

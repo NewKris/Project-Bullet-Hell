@@ -1,6 +1,6 @@
 using UnityEngine;
 using Werehorse.Runtime.ShipCombat.Combat;
-using Werehorse.Runtime.ShipCombat.Utility.CommonObjects;
+using Werehorse.Runtime.Utility.CommonObjects;
 
 namespace Werehorse.Runtime.ShipCombat.Effects.Explosions {
     public class ExplosionSystem : MonoBehaviour {

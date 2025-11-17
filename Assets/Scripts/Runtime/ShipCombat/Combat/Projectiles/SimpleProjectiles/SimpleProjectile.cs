@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Utility.Attributes;
+using Werehorse.Runtime.Utility.Attributes;
 
 namespace Werehorse.Runtime.ShipCombat.Combat.Projectiles.SimpleProjectiles {
     public struct SimpleProjectileConfig {

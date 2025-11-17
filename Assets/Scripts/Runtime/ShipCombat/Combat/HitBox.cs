@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
-using Werehorse.Runtime.ShipCombat.Utility.Extensions;
+using Werehorse.Runtime.Utility.Extensions;
 
 namespace Werehorse.Runtime.ShipCombat.Combat {
     public class HitBox : MonoBehaviour {
