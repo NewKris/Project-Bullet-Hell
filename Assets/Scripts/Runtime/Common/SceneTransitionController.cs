@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Werehorse.Runtime.Utility;
 
-namespace Werehorse.Runtime.ShipCombat.Common {
+namespace Werehorse.Runtime.Common {
     public class SceneTransitionController : MonoBehaviour {
         private static SceneTransitionController Instance;
 

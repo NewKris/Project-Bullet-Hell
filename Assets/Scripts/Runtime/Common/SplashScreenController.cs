@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Werehorse.Runtime.ShipCombat.Common {
+namespace Werehorse.Runtime.Common {
     public class SplashScreenController : MonoBehaviour {
         public float waitTime;
 

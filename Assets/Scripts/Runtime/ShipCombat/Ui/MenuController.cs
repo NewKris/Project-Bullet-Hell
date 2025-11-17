@@ -1,5 +1,5 @@
 using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Common;
+using Werehorse.Runtime.Common;
 
 namespace Werehorse.Runtime.ShipCombat.Ui {
     public class MenuController : MonoBehaviour {
