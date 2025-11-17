@@ -26,6 +26,9 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
             PlayerShipController.OnEndFire1 += EndFire1;
             PlayerShipController.OnBeginFire2 += BeginFire2;
             PlayerShipController.OnEndFire2 += EndFire2;
+
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
         }
 
         private void OnDestroy() {
@@ -33,10 +36,6 @@ namespace Werehorse.Runtime.ShipCombat.Ship {
             PlayerShipController.OnEndFire1 -= EndFire1;
             PlayerShipController.OnBeginFire2 -= BeginFire2;
             PlayerShipController.OnEndFire2 -= EndFire2;
-        }
-
-        private void OnEnable() {
-            Cursor.visible = false;
         }
 
         private void Update() {

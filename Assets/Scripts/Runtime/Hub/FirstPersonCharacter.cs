@@ -20,15 +20,29 @@ namespace Werehorse.Runtime.Hub {
         public float maxPitch;
         public float lookDamping;
 
+        [Header("Interaction")] 
+        public float interactRange;
+        public LayerMask interactionMask;
+        public GameObject prompt;
+
         private DampedAngle _yaw;
         private DampedAngle _pitch;
         private Transform _yawPivot;
         private Transform _pitchPivot;
+        private Interactable _interactable;
 
         private void OnValidate() {
             if (playerCamera) {
                 playerCamera.position = transform.TransformPoint(cameraOffset);
             }
+        }
+
+        private void Awake() {
+            PlayerHubController.OnInteract += TryInteract;
+        }
+
+        private void OnDestroy() {
+            PlayerHubController.OnInteract -= TryInteract;
         }
 
         private void Start() {
@@ -38,6 +52,10 @@ namespace Werehorse.Runtime.Hub {
         private void Update() {
             Look(Time.deltaTime);
             Move();
+        }
+
+        private void FixedUpdate() {
+            _interactable = FindInteractable();
         }
 
         private void Move() {
@@ -75,6 +93,20 @@ namespace Werehorse.Runtime.Hub {
             _yaw = new DampedAngle();
             _pitch = new DampedAngle();
             Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        private Interactable FindInteractable() {
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            bool hitInteraction = Physics.Raycast(ray, out RaycastHit hit, interactRange,  interactionMask);
+            prompt.SetActive(hitInteraction);
+            
+            return hitInteraction ? hit.collider.GetComponent<Interactable>() : null;
+        }
+
+        private void TryInteract() {
+            if (_interactable) {
+                _interactable.Interact();
+            }
         }
     }
 }

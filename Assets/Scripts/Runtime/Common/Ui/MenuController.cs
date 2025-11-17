@@ -1,7 +1,6 @@
 using UnityEngine;
-using Werehorse.Runtime.Common;
 
-namespace Werehorse.Runtime.ShipCombat.Ui {
+namespace Werehorse.Runtime.Common.Ui {
     public class MenuController : MonoBehaviour {
         public void GoToScene(int gameScene) {
             SceneTransitionController.LoadScene((GameScene)gameScene);

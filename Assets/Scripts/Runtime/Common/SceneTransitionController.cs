@@ -10,6 +10,10 @@ namespace Werehorse.Runtime.Common {
             SceneManager.LoadScene((int)scene);
         }
         
+        public static void LoadScene(int sceneId) {
+            SceneManager.LoadScene(sceneId);
+        }
+        
         private void Awake() {
             Singleton.SetSingleton(ref Instance, this);
         }

@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 452844433}
   - component: {fileID: 452844432}
   - component: {fileID: 452844436}
+  - component: {fileID: 452844437}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -342,6 +343,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d991431a2ec14d21b96dbd002e71b715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ui.MenuController
+--- !u!114 &452844437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452844431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c78312a0424a008f910f563c07044b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Hangar.HangarController
 --- !u!1 &464498247
 GameObject:
   m_ObjectHideFlags: 0

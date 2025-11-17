@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using Werehorse.Runtime.ShipCombat.Ship.Equipment;
 using Werehorse.Runtime.ShipCombat.Ship.Weapons;
 
-namespace Werehorse.Runtime.ShipCombat.Ui {
+namespace Werehorse.Runtime.Hangar {
     public enum WeaponHand {
         LEFT,
         RIGHT

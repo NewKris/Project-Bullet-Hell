@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 namespace Werehorse.Runtime.Hub {
     public class PlayerHubController : MonoBehaviour {
+        public static event Action OnInteract;
+        
         public int hubActionMap = 1;
 
         private InputAction _lookAction;
@@ -15,6 +17,9 @@ namespace Werehorse.Runtime.Hub {
         private void Awake() {
             _lookAction = InputSystem.actions.actionMaps[hubActionMap]["Look"];
             _moveAction = InputSystem.actions.actionMaps[hubActionMap]["Move"];
+            
+            InputSystem.actions.actionMaps[hubActionMap]["Interact"].performed += _ => OnInteract?.Invoke();
+            
             InputSystem.actions.actionMaps[hubActionMap].Enable();
         }
 
