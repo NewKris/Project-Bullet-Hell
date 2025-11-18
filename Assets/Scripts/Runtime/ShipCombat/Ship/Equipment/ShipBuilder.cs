@@ -22,13 +22,13 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
             EquipmentBlackBoard equipment = EquipmentBlackBoard.HasEquipment ? EquipmentBlackBoard.CurrentEquipment : defaultEquipments;
             
             GameObject instance = SpawnBaseShip(equipment.shipBaseId);
-            
-            shipCamera.target = instance.transform;
+
+            shipCamera.SetTarget(instance.transform, true);
         }
 
         private GameObject SpawnBaseShip(int id) {
             GameObject shipPrefab = shipDatabase.ships.First(ship => ship.id == id).shipBasePrefab;
-            GameObject instance = Instantiate(shipPrefab , spawnPoint.position, spawnPoint.rotation);
+            GameObject instance = Instantiate(shipPrefab, spawnPoint.position, spawnPoint.rotation, transform);
             instance.GetComponent<PlaneShip>().reticle = reticle;
             
             return instance;

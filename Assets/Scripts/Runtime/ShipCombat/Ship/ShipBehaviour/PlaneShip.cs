@@ -22,6 +22,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
         public Rigidbody rigidBody;
         public RectTransform reticle;
 
+        private bool _mouseSteering = true;
         private Vector2 _normalizedMousePosition;
         
         private void Awake() {
@@ -29,6 +30,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
             PlayerShipController.OnEndFire1 += EndFire1;
             PlayerShipController.OnBeginFire2 += BeginFire2;
             PlayerShipController.OnEndFire2 += EndFire2;
+            PlayerShipController.OnToggleSteering += ToggleSteerMode;
 
             PauseManager.OnPauseToggled += ToggleCursorVisibility;
             
@@ -40,6 +42,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
             PlayerShipController.OnEndFire1 -= EndFire1;
             PlayerShipController.OnBeginFire2 -= BeginFire2;
             PlayerShipController.OnEndFire2 -= EndFire2;
+            PlayerShipController.OnToggleSteering -= ToggleSteerMode;
             
             PauseManager.OnPauseToggled -= ToggleCursorVisibility;
         }
@@ -59,18 +62,34 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
                 return;
             }
             
-            Rotate(Time.fixedDeltaTime);
+            Steer(GetSteerValues(), Time.fixedDeltaTime);
             Move(Time.fixedDeltaTime);
         }
 
-        private void Rotate(float dt) {
+        private SteerValues GetSteerValues() {
+            if (_mouseSteering) {
+                return new SteerValues() {
+                    pitch = _normalizedMousePosition.y,
+                    yaw = _normalizedMousePosition.x,
+                    roll = PlayerShipController.Roll
+                };
+            }
+            
+            return new SteerValues() {
+                pitch = PlayerShipController.Pitch,
+                yaw = PlayerShipController.Yaw,
+                roll = PlayerShipController.Roll
+            };
+        }
+        
+        private void Steer(SteerValues steerValues, float dt) {
             _normalizedMousePosition = GetNormalizedMousePosition(PlayerShipController.MousePosition);
             Vector3 forward = transform.forward;
             Vector3 up = transform.up;
             
-            Quaternion pitch = Quaternion.AngleAxis(_normalizedMousePosition.y * -maxPitchSpeed * dt, transform.right);
-            Quaternion yaw = Quaternion.AngleAxis(_normalizedMousePosition.x * maxYawSpeed * dt, transform.up);
-            Quaternion roll = Quaternion.AngleAxis(PlayerShipController.Roll * -maxRollSpeed * dt, transform.forward);
+            Quaternion pitch = Quaternion.AngleAxis(steerValues.pitch * -maxPitchSpeed * dt, transform.right);
+            Quaternion yaw = Quaternion.AngleAxis(steerValues.yaw * maxYawSpeed * dt, transform.up);
+            Quaternion roll = Quaternion.AngleAxis(steerValues.roll * -maxRollSpeed * dt, transform.forward);
             
             forward = yaw * pitch * forward;
             up = pitch * roll * up;
@@ -118,6 +137,16 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
         private void ToggleCursorVisibility(bool showCursor) {
             Cursor.lockState = showCursor ? CursorLockMode.None : CursorLockMode.Confined;
             Cursor.visible = showCursor;
+        }
+
+        private void ToggleSteerMode() {
+            _mouseSteering = !_mouseSteering;
+        }
+        
+        private struct SteerValues {
+            public float pitch;
+            public float yaw;
+            public float roll;
         }
     }
 }
