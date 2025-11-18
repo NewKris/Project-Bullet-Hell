@@ -21,17 +21,31 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
         private void Awake() {
             EquipmentBlackBoard equipment = EquipmentBlackBoard.HasEquipment ? EquipmentBlackBoard.CurrentEquipment : defaultEquipments;
             
-            GameObject instance = SpawnBaseShip(equipment.shipBaseId);
+            PlaneShip ship = SpawnBaseShip(equipment.shipBaseId).GetComponent<PlaneShip>();
+            ship.weapon1 = SpawnWeapon(equipment.weapon1Id, ship.transform);
+            ship.weapon2 = SpawnWeapon(equipment.weapon2Id, ship.transform);
 
-            shipCamera.SetTarget(instance.transform, true);
+            shipCamera.SetTarget(ship.transform, true);
         }
 
         private GameObject SpawnBaseShip(int id) {
-            GameObject shipPrefab = shipDatabase.ships.First(ship => ship.id == id).shipBasePrefab;
+            GameObject shipPrefab = shipDatabase.GetShipData(id).shipBasePrefab;
             GameObject instance = Instantiate(shipPrefab, spawnPoint.position, spawnPoint.rotation, transform);
             instance.GetComponent<PlaneShip>().reticle = reticle;
             
             return instance;
+        }
+
+        private Weapon SpawnWeapon(int weaponId, Transform parent) {
+            if (weaponId < 0) {
+                return null;
+            }
+
+            GameObject weaponPrefab = weaponDatabase.GetWeaponData(weaponId).prefab;
+            GameObject instance = Instantiate(weaponPrefab, parent);
+            instance.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+            return instance.GetComponent<Weapon>();
         }
 
         private void ClearEquipmentCache() {
